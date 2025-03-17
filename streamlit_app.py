@@ -194,17 +194,17 @@ if uploaded_file is not None:
     st.write(stringio)
 
     # To read file as string:
-    string_data = stringio.read()
-    st.write(string_data)
+    # string_data = stringio.read()
+    # st.write(string_data)
 
     # Can be used wherever a "file-like" object is accepted:
     dataframe = pd.read_csv(uploaded_file)
-    # st.write(dataframe)
-    st.line_chart(
-        filtered_gdp_df,
-        x='GDP',
-        y='Year'
-    )
+    st.write(dataframe)
+    # st.line_chart(
+    #     filtered_gdp_df,
+    #     x='GDP',
+    #     y='Year'
+    # )
 
 
 'that\'s that'
