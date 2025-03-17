@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import math
 from pathlib import Path
+from io import StringIO
 
 # Set the title and favicon that appear in the Browser's tab bar.
 st.set_page_config(
@@ -149,3 +150,44 @@ for i, country in enumerate(selected_countries):
             delta=growth,
             delta_color=delta_color
         )
+
+@st.cache_data
+def get_data():
+    df = pd.DataFrame(
+        np.random.randn(50, 20), columns=("col %d" % i for i in range(20))
+    )
+    return df
+
+@st.cache_data
+def convert_for_download(df):
+    return df.to_csv().encode("utf-8")
+
+df = get_data()
+csv = convert_for_download(df)
+
+st.download_button(
+    label="Download CSV",
+    data=csv,
+    file_name="data.csv",
+    mime="text/csv",
+    icon=":material/download:",
+)
+
+
+uploaded_file = st.file_uploader("Choose a file")
+if uploaded_file is not None:
+    # To read file as bytes:
+    bytes_data = uploaded_file.getvalue()
+    st.write(bytes_data)
+
+    # To convert to a string based IO:
+    stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
+    st.write(stringio)
+
+    # To read file as string:
+    string_data = stringio.read()
+    st.write(string_data)
+
+    # Can be used wherever a "file-like" object is accepted:
+    dataframe = pd.read_csv(uploaded_file)
+    st.write(dataframe)
