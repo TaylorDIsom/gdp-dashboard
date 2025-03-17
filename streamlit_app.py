@@ -158,9 +158,10 @@ for i, country in enumerate(selected_countries):
 
 @st.cache_data
 def get_data():
-    df = pd.DataFrame(
-        np.random.randn(50, 20), columns=("col %d" % i for i in range(20))
-    )
+    # df = pd.DataFrame(
+    #     np.random.randn(50, 20), columns=("col %d" % i for i in range(20))
+    # )
+    df = gdp_df
     return df
 
 @st.cache_data
