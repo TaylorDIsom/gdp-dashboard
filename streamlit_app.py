@@ -171,13 +171,13 @@ def convert_for_download(df):
 df = get_data()
 csv = convert_for_download(df)
 
-# st.download_button(
-#     label="Download CSV",
-#     data=csv,
-#     file_name="data.csv",
-#     mime="text/csv",
-#     icon=":material/download:",
-# )
+st.download_button(
+    label="Download CSV",
+    data=csv,
+    file_name="data.csv",
+    mime="text/csv",
+    icon=":material/download:",
+)
 
 '''
 wtf is going on here?
