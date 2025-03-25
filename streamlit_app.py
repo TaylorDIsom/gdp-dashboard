@@ -207,4 +207,8 @@ if uploaded_file is not None:
     # )
 
 
+<<<<<<< HEAD
 'that\'s that'
+=======
+'that\'s that'
+>>>>>>> 12f849e (intro pages)
